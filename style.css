@@ -1,0 +1,212 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  
+  .game-container {
+    max-width: 640px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .screen {
+    display: none;
+  }
+  .screen:not(.hidden) {
+    display: block;
+  }
+  
+  .start-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border-radius: 12px;
+  }
+  
+  .item-explanation {
+    list-style: none;
+    padding: 10px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  .item-explanation li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    gap: 12px;
+    line-height: 1.6;
+  }
+  
+  .item-explanation li span {
+    display: inline-block;
+    min-width: 120px; /* 文字の左位置を揃える */
+  }
+
+  .item-explanation li img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+  
+  button {
+    padding: 16px 32px;
+    font-size: 22px;
+    background: #ff6699;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.1s ease;
+    margin: -20px auto 60px; /* 👈 これで下に空間を確保！ */
+  }
+  
+  .always-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9998;
+  }
+  
+  button:hover {
+    transform: scale(1.05);     /* ← ホバー時に少し大きく */
+  }
+  
+  
+  .score-container {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .game-area {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: white;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    border-radius: 10px;
+  
+    /* 追加：下にバナー分の余白を確保（重要！） */
+    margin-bottom: 140px;
+  }
+  
+  #player {
+    position: absolute;
+    width: 60px;
+    height: auto;
+    top: 10px;          /* ✅ これが正しい */
+    left: 50px;
+    transition: top 0.2s ease, left 0.2s ease;
+  }
+  
+  
+  .falling-item {
+    position: absolute;
+    width: 40px;
+    height: auto;
+    top: 50%;
+  }
+  .result-image {
+    width: 100px;
+    margin: 20px 0;
+  }
+  
+/* スコア履歴のデザイン調整 */
+.score-history {
+    margin: 20px auto;
+    max-width: 500px;
+    background-color: #fffafc;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 14px; /* ←少し小さく調整 */
+  }
+  
+  /* 見出し間の余白調整 */
+  .score-history h3 {
+    margin: 0 0 10px;
+  }
+  
+  /* スコアリストの表示調整（中央寄せ感＋番号付きに） */
+  .score-history ul {
+    padding-left: 1.2em; /* ←自然な左余白 */
+    margin: 0 0 10px;
+    list-style-type: decimal; /* ←「1. 2. 3.」の番号付きに */
+  }
+
+  .fixed-bottom-banner {
+    display: none;
+    position: fixed;
+    bottom: 60px; /* 👈 少し上げてバナーが見やすい */
+    width: 100%;
+    z-index: 9999;
+  }
+  
+  .fixed-bottom-banner img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+  
+  #game-over-screen,
+#game-clear-screen {
+  z-index: 10000;
+  position: relative; /* ← 必須！！ */
+}
+
+/* かわいい手書きフォント（共通） */
+body {
+    font-family: 'Yomogi', sans-serif;
+    font-weight: 600; /* ← これで細すぎを解消 */
+  }
+  
+  /* ゲーム中：スクロール禁止＆固定 */
+  body.game-active {
+    overflow: hidden;
+    touch-action: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* 虹色文字スタイル */
+  .rainbow-text {
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: 'Yomogi', cursive;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+    text-align: center;
+  }
+  
+  
+  /* 見出し調整 */
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  
+  
+
+
+  
+  
+  
