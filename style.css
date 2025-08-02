@@ -183,15 +183,17 @@ body:not(.game-active) #game-banner { display: none !important; }
   justify-content: center;
   align-items: center;
   margin: 20px auto;
+  min-height: 150px; /* 下が詰まらないように */
 }
 
 .result-image {
-  max-width: 20%;    /* 横幅を画面の20%に制限 */
-  max-height: 20vh;  /* 高さを画面の20%に制限 */
+  max-width: 180px;   /* 小さめ固定でもOK */
+  max-height: 180px;
   object-fit: contain;
   display: block;
   margin: 10px auto;
 }
+
 
 
 
