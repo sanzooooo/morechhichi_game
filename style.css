@@ -180,32 +180,31 @@ body:not(.game-active) #game-banner { display: none !important; }
 /* === 結果画面の画像（ランダム表示用） === */
 .result-area {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* 縦に並べる */
+  justify-content: center;
   align-items: center;
-  justify-content: center;  /* 中央寄せ */
-  gap: 20px;
-  width: 100%;
-  min-height: 60vh;
+  height: 100vh; /* 画面の高さにフィットさせる */
 }
 
 .finish-image {
-  max-width: 40vw;   /* PCは幅40% */
-  max-height: 40vh;  /* PCは高さ40% */
+  max-width: 50vw;   /* 画面幅の50%まで */
+  max-height: 50vh;  /* 画面高さの50%まで */
   object-fit: contain;
   display: block;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 #game-over-screen p,
 #game-clear-screen p {
-  font-size: 3rem;
+  font-size: 4rem; /* スコアを大きめに */
   font-weight: bold;
-  margin: 0;
+  margin: 20px 0;
   text-align: center;
 }
 
-.image-button {
-  margin: 20px auto;
+.image-button img {
+  width: 300px;  /* ボタンも大きくする */
+  max-width: 80vw;
 }
 
 /* モバイル */
