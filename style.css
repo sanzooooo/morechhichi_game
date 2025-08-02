@@ -28,11 +28,12 @@ body.game-active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* 上寄せ */
   min-height: 100vh;
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  background-color: transparent !important; /* 背景透過 */
 }
 
 /* 画像ボタン共通スタイル */
@@ -63,26 +64,23 @@ body.game-active {
   position: relative;
   width: 100%;
   height: 400px;
-  background: white;
-  border: 2px solid #ccc;
   overflow: hidden;
-  border-radius: 10px;
   background-image: url('img/background.png');
   background-repeat: no-repeat;
-  background-size: auto 100%;
+  background-size: auto 100%;  /* デフォルトは縦にフィット */
   background-position: center;
-  margin-bottom: var(--game-banner-height);
+  background-color: transparent; /* 透過化 */
 }
 
 @media (max-width: 600px) {
   .game-area {
     width: 100vw;            /* 画面幅いっぱい */
-    max-width: 100vw;        /* 最大幅も制限なし */
-    border-radius: 0;        /* 枠丸を消す（任意） */
-    border: none;            /* 枠線も消す（任意） */
-    background-size: auto 100%;  /* 縦にフィット */
+    max-width: 100vw;
+    border-radius: 0;
+    border: none;
+    background-size: auto 100%;  
     background-position: center;
-    background-repeat: repeat-x;
+    background-repeat: repeat-x; /* 横に繰り返して余白なし */
   }
 }
 
@@ -117,15 +115,9 @@ body.game-active {
 
 /* === ゲーム中バナー === */
 #game-banner {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 999;
-  background: white;
-  text-align: center;
-  padding: 4px 0;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
 }
 
 #game-banner img {
@@ -204,6 +196,7 @@ body.game-active {
   font-weight: bold;
   margin: 20px 0;
   text-align: center;
+  background-color: transparent;
 }
 
 @media (max-width: 600px) {
@@ -270,31 +263,12 @@ body.game-active {
   margin: 2px 0;
 }
 
-/* モバイル最適化 */
 @media (max-width: 600px) {
   #bestScore { font-size: 3rem; }
   .old-score-block .score-row { font-size: 1.6rem; }
 }
 
-/* === 全体背景を青空グラデーションに統一 === */
-body, .screen {
-  background: linear-gradient(to bottom, #aee4ff 0%, #ffffff 100%);
-  background-attachment: fixed;
-  margin: 0;
-}
-
-/* ゲームエリアの白背景を透過にして背景を活かす */
-.game-area {
-  background-color: transparent;
-}
-
-/* 結果画面（ゲームオーバー・クリア）も透過背景に */
-#game-over-screen,
-#game-clear-screen {
-  background-color: transparent;
-}
-
-/* === 固定背景 === */
+/* === 固定背景（全体グラデーション） === */
 .bg {
   position: fixed;
   top: 0;
@@ -304,12 +278,3 @@ body, .screen {
   background: linear-gradient(to bottom, #aee4ff 0%, #ffffff 100%);
   z-index: -1; /* 常に背景にする */
 }
-
-/* 既存の白背景を透過に変更 */
-.screen,
-.game-area,
-#game-over-screen,
-#game-clear-screen {
-  background-color: transparent !important;
-}
-
