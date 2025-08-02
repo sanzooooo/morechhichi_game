@@ -57,7 +57,7 @@ document.addEventListener('pointermove', (e) => {
   if (document.body.classList.contains('game-active') && isDragging) {
     e.preventDefault();
     const offsetX = player.offsetWidth / 2;
-    const offsetY = player.offsetHeight / 2 + 40;
+    const offsetY = player.offsetHeight / 2 + 20;
     const x = e.clientX - gameArea.offsetLeft - offsetX;
     const y = e.clientY - gameArea.offsetTop - offsetY;
     moveTo(x, y);
