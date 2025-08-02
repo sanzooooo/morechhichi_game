@@ -3,9 +3,9 @@ body {
   font-family: 'Yomogi', sans-serif;
   font-weight: 600;
   height: 100%;
+  margin: 0;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  margin: 0;
 }
 
 html, body {
@@ -18,6 +18,17 @@ body.game-active {
   touch-action: none;
   width: 100%;
   height: 100%;
+}
+
+/* === 固定背景（全体グラデーション） === */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #aee4ff 0%, #ffffff 100%);
+  z-index: -1; /* 常に背景にする */
 }
 
 /* === スクリーン表示制御 === */
@@ -52,52 +63,20 @@ body.game-active {
   display: block;
 }
 
-@media (max-width: 600px) {
-  .game-area {
-    width: 100vw;
-    max-width: 100vw;
-    border-radius: 0;
-    border: none;
-    background-size: auto 100%;
-    background-position: center;
-    background-repeat: repeat-x; /* 横方向に繰り返しで隙間ゼロ */
-  }
-}
-
 /* === ゲームエリア === */
 .game-area {
   position: relative;
   width: 100%;
-  height: 60vh; /* 画面高さの6割に自動調整 */
+  height: 60vh; /* 画面高さの6割 */
   overflow: hidden;
   background-image: url('img/background.png');
   background-repeat: no-repeat;
-  background-size: auto 100%;  /* デフォルトは縦にフィット */
+  background-size: auto 100%;  /* 縦フィット */
   background-position: center;
-  background-color: transparent; /* 透過化 */
-}
-
-@media (max-width: 600px) {
-  .game-area {
-    width: 100vw;            /* 画面幅いっぱい */
-    max-width: 100vw;
-    border-radius: 0;
-    border: none;
-    background-size: auto 100%;  
-    background-position: center;
-    background-repeat: repeat-x; /* 横に繰り返して余白なし */
-  }
-}
-
-/* === 結果画像調整 === */
-.result-image {
-  max-width: 240px;
-  height: auto;
-  margin: 20px 0;
-}
-
-:root {
-  --game-banner-height: 100px;
+  background-color: transparent;
+  margin: 0;
+  border: none;
+  border-radius: 0;
 }
 
 /* === トップ画面バナー === */
@@ -108,30 +87,6 @@ body.game-active {
   margin: 0 auto 16px;
   display: block;
   border-radius: 12px;
-  object-fit: contain;
-}
-
-@media (max-width: 600px) {
-  .start-image {
-    max-width: 90%;
-    max-height: 180px;
-  }
-}
-
-/* === ゲーム中バナー === */
-#game-banner {
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-}
-
-#game-banner img {
-  max-width: 100%;
-  max-height: 120px;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-  border-radius: 12px 12px 0 0;
   object-fit: contain;
 }
 
@@ -147,13 +102,23 @@ body.game-active {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-@media (max-width: 600px) {
-  .score-image {
-    max-width: 90%;
-  }
+/* === ゲーム中バナー === */
+#game-banner {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+#game-banner img {
+  max-width: 100%;
+  max-height: 120px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  border-radius: 12px 12px 0 0;
+  object-fit: contain;
 }
 
-/* ==== キャラとアイテム ==== */
+/* === キャラとアイテム === */
 #player {
   position: absolute;
   width: 130px;
@@ -170,11 +135,6 @@ body.game-active {
   top: 50%;
 }
 
-@media (max-width: 600px) {
-  #player { width: 100px; }
-  .falling-item { width: 70px; }
-}
-
 /* === ゲーム中のスコア表示 === */
 .score-container {
   display: flex;
@@ -187,13 +147,6 @@ body.game-active {
   font-family: 'Yomogi', sans-serif;
 }
 
-@media (max-width: 600px) {
-  .score-container {
-    font-size: 1.6rem;
-    gap: 20px;
-  }
-}
-
 /* === 終了画面のスコア === */
 #game-over-screen p,
 #game-clear-screen p {
@@ -204,20 +157,13 @@ body.game-active {
   background-color: transparent;
 }
 
-@media (max-width: 600px) {
-  #game-over-screen p,
-  #game-clear-screen p {
-    font-size: 2rem;
-  }
-}
-
-/* === 新スコアセクション === */
+/* === スコアセクション === */
 .score-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;              /* ブロック間の余白を縮める */
-  margin: 10px auto 10px; /* 上下の余白もコンパクトに */
+  gap: 12px;
+  margin: 10px auto;
   width: 100%;
   max-width: 600px;
 }
@@ -229,16 +175,14 @@ body.game-active {
   align-items: center;
   gap: 4px;
 }
-
 .best-score-block .score-banner {
   width: 100%;
   max-width: 320px;
   height: auto;
 }
-
 #bestScore {
-  font-size: 4.5rem;       /* 1.5倍大きく */
-  font-weight: 800;        /* 太字で目立たせる */
+  font-size: 4.5rem;
+  font-weight: 800;
   color: #000;
   line-height: 1;
   font-family: 'Yomogi', sans-serif;
@@ -251,52 +195,56 @@ body.game-active {
   align-items: center;
   gap: 2px;
 }
-
 .old-score-block .score-banner {
   width: 100%;
   max-width: 400px;
   height: auto;
   margin-bottom: 4px;
 }
-
 .old-score-block .score-row {
-  font-size: 2rem;          /* 大きめで視認性UP */
-  font-weight: 700;         /* 太字でくっきり */
+  font-size: 2rem;
+  font-weight: 700;
   color: #000;
   line-height: 1.3;
   font-family: 'Yomogi', sans-serif;
   margin: 2px 0;
 }
 
-@media (max-width: 600px) {
-  #bestScore { font-size: 3rem; }
-  .old-score-block .score-row { font-size: 1.6rem; }
-}
-
-/* === 固定背景（全体グラデーション） === */
-.bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #aee4ff 0%, #ffffff 100%);
-  z-index: -1; /* 常に背景にする */
-}
-
-/* ゲーム画面だけ余白ゼロにして白帯を消す */
+/* === ゲーム画面専用調整（白帯消し） === */
 #game-screen.screen {
-  padding: 0 !important;         /* ゲーム中は余白ゼロ */
-  justify-content: flex-start;   /* 上詰め */
-  }
-  
-  #game-screen .score-container {
-    margin: 10px 0; /* 上に少しだけ余白 */
-  }
-
-  /* ゲームエリアをフル幅にして枠を消す */
-  #game-screen .game-area {
+  padding: 0 !important;
+  justify-content: flex-start;
+}
+#game-screen .score-container {
+  margin: 10px 0;
+}
+#game-screen .game-area {
   margin: 0;
   border-radius: 0;
   border: none;
+}
+
+/* === モバイル最適化まとめ === */
+@media (max-width: 600px) {
+  .game-area {
+    width: 100vw;
+    max-width: 100vw;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: repeat-x; /* 横方向に繰り返しで隙間ゼロ */
   }
+
+  #player { width: 100px; }
+  .falling-item { width: 70px; }
+
+  .score-image { max-width: 90%; }
+  .start-image { max-width: 90%; max-height: 180px; }
+
+  #bestScore { font-size: 3rem; }
+  .old-score-block .score-row { font-size: 1.6rem; }
+
+  .score-container { font-size: 1.6rem; gap: 20px; }
+
+  #game-over-screen p,
+  #game-clear-screen p { font-size: 2rem; }
+}
