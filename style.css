@@ -177,65 +177,55 @@ body:not(.game-active) #game-banner { display: none !important; }
   #game-over-screen p, #game-clear-screen p { font-size: 2rem; }
 }
 
-/* === 結果画面レイアウト全体 === */
+/* === 結果画面中央寄せ === */
 .result-area {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh; /* 画面全体を使う */
-  gap: 20px; /* 各要素の間隔 */
+  justify-content: center;
+  min-height: 60vh; /* 画面の6割を使う */
+  gap: 12px; /* 各要素の隙間 */
 }
 
-/* ランダム表示画像に対応 */
-.result-image,
 .finish-image {
   width: auto;
-  max-width: 40vw;
+  max-width: 30vw;
   max-height: 40vh;
   object-fit: contain;
   display: block;
-  margin: 0 auto;
 }
 
-/* スコアテキスト */
+/* スコア表示を中央寄せで近づける */
 #game-over-screen p,
 #game-clear-screen p {
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 0;
+  font-size: 2.5rem;
+  margin: 4px 0;
 }
 
-/* ボタンサイズ調整 */
+/* ボタンを近くに寄せる */
+.image-button {
+  margin: 8px auto 0;
+}
+
 .image-button img {
-  width: 240px;
-  max-width: 60vw;
+  width: 200px;
+  max-width: 50vw;
 }
 
-/* モバイル調整 */
+/* === モバイル調整 === */
 @media (max-width: 600px) {
-  .result-image,
   .finish-image {
-    max-width: 60vw;
+    max-width: 55vw;
     max-height: 30vh;
   }
 
   #game-over-screen p,
   #game-clear-screen p {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .image-button img {
-    width: 180px;
+    width: 150px;
   }
 }
-
-
-
-
-
-
-
-
-
 
