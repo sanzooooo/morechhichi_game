@@ -74,6 +74,14 @@ body.game-active {
   margin-bottom: var(--game-banner-height);
 }
 
+@media (max-width: 600px) {
+  .game-area {
+    background-size: 100% auto;  /* 横幅いっぱいにフィット */
+    background-position: center top; /* 上寄せで切れを自然に */
+  }
+}
+
+
 /* === 結果画像調整 === */
 .result-image {
   max-width: 240px;
