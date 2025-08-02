@@ -62,7 +62,8 @@ body.game-active {
   background-image: url('img/background.png');
   background-repeat: no-repeat;
   background-size: auto 100%;
-  background-position: center;
+  background-position: center top; /* ← 背景を上基準に変更 */
+  padding-top: 50px; /* 上に余白を追加（必要に応じて調整） */
   background-color: transparent;
 }
 
@@ -174,5 +175,14 @@ body:not(.game-active) #game-banner { display: none !important; }
   #bestScore { font-size: 3rem; }
   .old-score-block .score-row { font-size: 1.6rem; }
   #game-over-screen p, #game-clear-screen p { font-size: 2rem; }
+}
+
+/* === 終了画面の画像サイズ制御 === */
+.finish-image {
+  max-width: 90vw;  /* 横幅は画面の90%以内 */
+  max-height: 60vh; /* 高さは画面の60%以内 */
+  object-fit: contain;
+  display: block;
+  margin: 20px auto;
 }
 
