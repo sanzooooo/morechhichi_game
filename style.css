@@ -48,12 +48,11 @@ body.game-active {
 
 /* === ゲームエリア === */
 #game-screen .game-area {
-  margin-top: 100px; /* スコア分の余白 */
+  margin-top: 100px; /* スコア分の余白のみ */
   border: none;
   border-radius: 0;
   padding: 0;
 }
-
 .game-area {
   position: relative;
   width: 100%;
@@ -62,8 +61,7 @@ body.game-active {
   background-image: url('img/background.png');
   background-repeat: no-repeat;
   background-size: auto 100%;
-  background-position: center top; /* ← 背景を上基準に変更 */
-  padding-top: 50px; /* 上に余白を追加（必要に応じて調整） */
+  background-position: center;
   background-color: transparent;
 }
 
@@ -89,16 +87,11 @@ body.game-active {
   position: fixed;
   bottom: 20px;
   width: 100%;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
   text-align: center;
 }
 #game-banner img {
   max-width: 100%;
   max-height: 120px;
-  display: block;
-  margin: 0 auto;
   object-fit: contain;
   border-radius: 12px 12px 0 0;
 }
@@ -117,123 +110,87 @@ body.game-active {
   top: 50%;
 }
 
-/* === 結果画面 === */
-#game-over-screen p,
-#game-clear-screen p {
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 20px 0;
-  text-align: center;
-  background-color: transparent;
-}
-#game-over-screen #player,
-#game-over-screen .falling-item,
-#game-clear-screen #player,
-#game-clear-screen .falling-item {
-  display: none !important;
-}
-
 /* === スコアセクション === */
-.score-section { display:flex; flex-direction:column; align-items:center; gap:12px; margin:10px auto; width:100%; max-width:600px; }
-.best-score-block { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.score-section {
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+  margin:10px auto; width:100%; max-width:600px;
+}
+.best-score-block {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+}
 .best-score-block .score-banner { width:100%; max-width:320px; }
-#bestScore { font-size:4.5rem; font-weight:800; color:#000; line-height:1; font-family:'Yomogi',sans-serif; }
-.old-score-block { display:flex; flex-direction:column; align-items:center; gap:2px; }
+#bestScore { font-size:4.5rem; font-weight:800; color:#000; line-height:1; }
+.old-score-block {
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+}
 .old-score-block .score-banner { width:100%; max-width:400px; margin-bottom:4px; }
-.old-score-block .score-row { font-size:2rem; font-weight:700; color:#000; line-height:1.3; font-family:'Yomogi',sans-serif; margin:2px 0; }
+.old-score-block .score-row { font-size:2rem; font-weight:700; color:#000; margin:2px 0; }
 
 /* === アイテム一覧画像 === */
 .score-image {
   width: 100%;
   max-width: 600px;
   margin: 20px auto;
-  display: block;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* === 画像ボタン共通 === */
-.image-button { background:none; border:none; padding:0; cursor:pointer; display:block; margin:40px auto; }
-.image-button img { width:100%; max-width:320px; height:auto; display:block; }
+.image-button { background:none; border:none; padding:0; cursor:pointer; display:block; margin:12px auto 0; }
+.image-button img { width:200px; max-width:50vw; height:auto; display:block; }
 
 /* === トップ画面バナー === */
 .start-image { width:100%; max-width:600px; margin:0 auto 16px; display:block; border-radius:12px; object-fit:contain; }
 
 /* === バナー表示制御 === */
-#start-screen #game-banner { display: none !important; }
+#start-screen #game-banner,
 body:not(.game-active) #game-banner { display: none !important; }
 
-/* === モバイル調整 === */
+/* === 結果画面（共通化） === */
+#game-over-screen,
+#game-clear-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 8px;
+}
+.result-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.result-image, .finish-image {
+  width: auto;
+  height: auto;
+  max-width: 35vw;
+  max-height: 35vh;
+  object-fit: contain;
+}
+#game-over-screen p,
+#game-clear-screen p {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* === モバイル対応 === */
 @media (max-width: 600px) {
-  .score-container { top: 50px; font-size: 1.6rem; gap: 20px; }
-  .game-area { width:100vw; max-width:100vw; background-repeat:repeat-x; background-size:auto 100%; background-position:center; }
+  .game-area { width:100vw; max-width:100vw; background-repeat:repeat-x; }
   #player { width: 100px; }
   .falling-item { width: 70px; }
   .score-image { max-width: 90%; }
   .start-image { max-width: 90%; max-height: 180px; }
   #bestScore { font-size: 3rem; }
   .old-score-block .score-row { font-size: 1.6rem; }
-  #game-over-screen p, #game-clear-screen p { font-size: 2rem; }
+
+  .result-image, .finish-image { max-width: 60vw; max-height: 30vh; }
+  #game-over-screen p, #game-clear-screen p { font-size: 1.6rem; }
+  .image-button img { width: 140px; }
 }
 
-/* === 結果画面の中央寄せ＆コンパクト配置 === */
-#game-over-screen,
-#game-clear-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;   /* 画面中央に配置 */
-  min-height: 100vh;
-  gap: 12px;                 /* 各要素間の基本間隔 */
-}
-
-/* 結果表示エリア */
-.result-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;                  /* 画像とスコアの間隔を小さめに */
-}
-
-/* 結果画像（比率維持で縮小） */
-.finish-image {
-  max-width: 40vw;           /* PCは画面幅の40%まで */
-  max-height: 40vh;          /* PCは画面高さの40%まで */
-  object-fit: contain;
-  display: block;
-}
-
-/* スコア表示 */
-#game-over-screen p,
-#game-clear-screen p {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin: 0;                 /* 余白を詰めて画像に近づける */
-}
-
-/* ボタン */
-.image-button {
-  margin: 0 auto;            /* 下だけ余白 */
-}
-.image-button img {
-  width: 180px;
-  max-width: 50vw;
-}
-
-/* === モバイル対応 === */
-@media (max-width: 600px) {
-  .finish-image {
-    max-width: 65vw;
-    max-height: 30vh;
-  }
-  #game-over-screen p,
-  #game-clear-screen p {
-    font-size: 1.6rem;
-  }
-  .image-button img {
-    width: 140px;
-  }
-}
 
 
