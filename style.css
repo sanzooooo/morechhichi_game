@@ -44,16 +44,39 @@ body.game-active {
 #game-screen.screen {
   padding: 0 !important;
   justify-content: flex-start;
+  align-items: flex-start;
 }
-#game-screen .score-container {
-  margin-top: 10px; /* 常に少し余白で見える */
-  position: relative;
-  z-index: 2;
+
+/* === ゲーム中スコアを上部固定 === */
+.score-container {
+  position: absolute;
+  top: 20px;           /* PCは20px下に */
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Yomogi', sans-serif;
 }
+
+@media (max-width: 600px) {
+  .score-container {
+    top: 40px;  /* モバイルは少し下げる */
+    font-size: 1.6rem;
+    gap: 20px;
+  }
+}
+
 #game-screen .game-area {
   margin: 0;
   border: none;
   border-radius: 0;
+  padding: 0; 
 }
 
 /* === ゲームエリア === */
@@ -85,20 +108,6 @@ body.game-active {
   .start-image { max-width: 90%; max-height: 180px; }
   #bestScore { font-size: 3rem; }
   .old-score-block .score-row { font-size: 1.6rem; }
-  .score-container { font-size: 1.6rem; gap: 20px; }
-}
-
-/* === スコア表示 === */
-.score-container {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  font-size: 2.4rem;
-  font-weight: 600;
-  color: #333;
-  font-family: 'Yomogi', sans-serif;
-  margin-bottom: 15px;
-  z-index: 2;
 }
 
 /* === 画像ボタン共通 === */
@@ -130,10 +139,15 @@ body.game-active {
 /* === ゲーム中バナー === */
 #game-banner {
   display: none; /* 初期は非表示 */
+  position: fixed;
+  bottom: 20px;      /* 親に付ける */
+  width: 100%;
   background: transparent;
   padding: 0;
   box-shadow: none;
+  text-align: center;
 }
+
 #game-banner img {
   max-width: 100%;
   max-height: 120px;
@@ -217,3 +231,20 @@ body.game-active {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
+
+/* === トップページでは下ロゴ非表示 === */
+#start-screen #game-banner {
+  display: none !important;
+}
+
+/* ゲーム中以外はバナー非表示 */
+body:not(.game-active) #game-banner {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .score-container {
+    top: 50px; /* 40px→50px で少し下げる */
+  }
+}
+
