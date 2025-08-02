@@ -8,7 +8,6 @@ body, html {
   -webkit-overflow-scrolling: touch;
 }
 
-/* ゲーム中はスクロール禁止 */
 body.game-active {
   overflow: hidden;
   touch-action: none;
@@ -33,53 +32,28 @@ body.game-active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* 上寄せ */
+  justify-content: flex-start;
   min-height: 100vh;
   text-align: center;
   box-sizing: border-box;
   background-color: transparent !important;
 }
 
-/* ゲーム画面だけ余白ゼロにして白帯を消す */
+/* === ゲーム画面調整 === */
 #game-screen.screen {
   padding: 0 !important;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-/* === ゲーム中スコアを上部固定 === */
-.score-container {
-  position: absolute;
-  top: 20px;           /* PCは20px下に */
-  width: 100%;
-  text-align: center;
-  z-index: 10;
-
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  font-size: 2.4rem;
-  font-weight: 600;
-  color: #333;
-  font-family: 'Yomogi', sans-serif;
-}
-
-@media (max-width: 600px) {
-  .score-container {
-    top: 40px;  /* モバイルは少し下げる */
-    font-size: 1.6rem;
-    gap: 20px;
-  }
-}
-
+/* === ゲームエリア === */
 #game-screen .game-area {
-  margin: 0;
+  margin-top: 100px; /* スコア分の余白 */
   border: none;
   border-radius: 0;
-  padding: 0; 
+  padding: 0;
 }
 
-/* === ゲームエリア === */
 .game-area {
   position: relative;
   width: 100%;
@@ -92,62 +66,33 @@ body.game-active {
   background-color: transparent;
 }
 
-/* モバイル対応 */
-@media (max-width: 600px) {
-  .game-area {
-    width: 100vw;
-    max-width: 100vw;
-    background-repeat: repeat-x;
-    background-size: auto 100%;
-    background-position: center;
-  }
-
-  #player { width: 100px; }
-  .falling-item { width: 70px; }
-  .score-image { max-width: 90%; }
-  .start-image { max-width: 90%; max-height: 180px; }
-  #bestScore { font-size: 3rem; }
-  .old-score-block .score-row { font-size: 1.6rem; }
-}
-
-/* === 画像ボタン共通 === */
-.image-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  display: block;
-  margin: 40px auto;
-}
-.image-button img {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  display: block;
-}
-
-/* === トップ画面バナー === */
-.start-image {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto 16px;
-  display: block;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-/* === ゲーム中バナー === */
-#game-banner {
-  display: none; /* 初期は非表示 */
+/* === スコア表示 === */
+.score-container {
   position: fixed;
-  bottom: 20px;      /* 親に付ける */
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Yomogi', sans-serif;
+  z-index: 100;
+}
+
+/* === ゲームバナー === */
+#game-banner {
+  display: none;
+  position: fixed;
+  bottom: 20px;
   width: 100%;
   background: transparent;
   padding: 0;
   box-shadow: none;
   text-align: center;
 }
-
 #game-banner img {
   max-width: 100%;
   max-height: 120px;
@@ -171,7 +116,7 @@ body.game-active {
   top: 50%;
 }
 
-/* === 結果画面スコア === */
+/* === 結果画面 === */
 #game-over-screen p,
 #game-clear-screen p {
   font-size: 3rem;
@@ -180,46 +125,21 @@ body.game-active {
   text-align: center;
   background-color: transparent;
 }
-@media (max-width: 600px) {
-  #game-over-screen p,
-  #game-clear-screen p {
-    font-size: 2rem;
-  }
+#game-over-screen #player,
+#game-over-screen .falling-item,
+#game-clear-screen #player,
+#game-clear-screen .falling-item {
+  display: none !important;
 }
 
 /* === スコアセクション === */
-.score-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin: 10px auto;
-  width: 100%;
-  max-width: 600px;
-}
-
-/* ベストスコア */
-.best-score-block { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.best-score-block .score-banner { width: 100%; max-width: 320px; }
-#bestScore {
-  font-size: 4.5rem;
-  font-weight: 800;
-  color: #000;
-  line-height: 1;
-  font-family: 'Yomogi', sans-serif;
-}
-
-/* 過去スコア */
-.old-score-block { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.old-score-block .score-banner { width: 100%; max-width: 400px; margin-bottom: 4px; }
-.old-score-block .score-row {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #000;
-  line-height: 1.3;
-  font-family: 'Yomogi', sans-serif;
-  margin: 2px 0;
-}
+.score-section { display:flex; flex-direction:column; align-items:center; gap:12px; margin:10px auto; width:100%; max-width:600px; }
+.best-score-block { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.best-score-block .score-banner { width:100%; max-width:320px; }
+#bestScore { font-size:4.5rem; font-weight:800; color:#000; line-height:1; font-family:'Yomogi',sans-serif; }
+.old-score-block { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.old-score-block .score-banner { width:100%; max-width:400px; margin-bottom:4px; }
+.old-score-block .score-row { font-size:2rem; font-weight:700; color:#000; line-height:1.3; font-family:'Yomogi',sans-serif; margin:2px 0; }
 
 /* === アイテム一覧画像 === */
 .score-image {
@@ -232,19 +152,27 @@ body.game-active {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* === トップページでは下ロゴ非表示 === */
-#start-screen #game-banner {
-  display: none !important;
-}
+/* === 画像ボタン共通 === */
+.image-button { background:none; border:none; padding:0; cursor:pointer; display:block; margin:40px auto; }
+.image-button img { width:100%; max-width:320px; height:auto; display:block; }
 
-/* ゲーム中以外はバナー非表示 */
-body:not(.game-active) #game-banner {
-  display: none !important;
-}
+/* === トップ画面バナー === */
+.start-image { width:100%; max-width:600px; margin:0 auto 16px; display:block; border-radius:12px; object-fit:contain; }
 
+/* === バナー表示制御 === */
+#start-screen #game-banner { display: none !important; }
+body:not(.game-active) #game-banner { display: none !important; }
+
+/* === モバイル調整 === */
 @media (max-width: 600px) {
-  .score-container {
-    top: 50px; /* 40px→50px で少し下げる */
-  }
+  .score-container { top: 50px; font-size: 1.6rem; gap: 20px; }
+  .game-area { width:100vw; max-width:100vw; background-repeat:repeat-x; background-size:auto 100%; background-position:center; }
+  #player { width: 100px; }
+  .falling-item { width: 70px; }
+  .score-image { max-width: 90%; }
+  .start-image { max-width: 90%; max-height: 180px; }
+  #bestScore { font-size: 3rem; }
+  .old-score-block .score-row { font-size: 1.6rem; }
+  #game-over-screen p, #game-clear-screen p { font-size: 2rem; }
 }
 
