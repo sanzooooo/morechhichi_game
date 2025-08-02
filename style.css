@@ -183,18 +183,18 @@ body:not(.game-active) #game-banner { display: none !important; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height: 30vh; /* 終了時エリア自体を小さく */
-  overflow: hidden;
+  max-width: 100%;
+  padding: 20px 0;
 }
 
 .finish-image {
   width: auto;
-  max-width: 20vw;   /* 横幅は画面の20%以内 */
-  max-height: 20vh;  /* 高さは画面の20%以内 */
+  max-width: 200px; /* ← 横幅を固定して極端に大きくならないように */
+  height: auto;
+  margin: 10px auto;
   object-fit: contain;
-  display: block;
-  margin: 5px auto;
 }
+
 
 
 
