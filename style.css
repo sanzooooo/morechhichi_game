@@ -31,7 +31,6 @@ body.game-active {
   justify-content: flex-start; /* 上寄せ */
   min-height: 100vh;
   text-align: center;
-  padding: 20px;
   box-sizing: border-box;
   background-color: transparent !important; /* 背景透過 */
 }
@@ -54,8 +53,14 @@ body.game-active {
 }
 
 @media (max-width: 600px) {
-  .image-button img {
-    max-width: 240px;
+  .game-area {
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+    border: none;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: repeat-x; /* 横方向に繰り返しで隙間ゼロ */
   }
 }
 
@@ -63,7 +68,7 @@ body.game-active {
 .game-area {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 60vh; /* 画面高さの6割に自動調整 */
   overflow: hidden;
   background-image: url('img/background.png');
   background-repeat: no-repeat;
@@ -278,3 +283,20 @@ body.game-active {
   background: linear-gradient(to bottom, #aee4ff 0%, #ffffff 100%);
   z-index: -1; /* 常に背景にする */
 }
+
+/* ゲーム画面だけ余白ゼロにして白帯を消す */
+#game-screen.screen {
+  padding: 0 !important;         /* ゲーム中は余白ゼロ */
+  justify-content: flex-start;   /* 上詰め */
+  }
+  
+  #game-screen .score-container {
+    margin: 10px 0; /* 上に少しだけ余白 */
+  }
+
+  /* ゲームエリアをフル幅にして枠を消す */
+  #game-screen .game-area {
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  }
