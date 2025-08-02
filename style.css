@@ -177,23 +177,23 @@ body:not(.game-active) #game-banner { display: none !important; }
   #game-over-screen p, #game-clear-screen p { font-size: 2rem; }
 }
 
-/* === 終了画面の画像サイズ制御（極小化） === */
+/* === 結果画面の画像（ランダム表示用） === */
 .result-area {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  max-width: 100%;
-  padding: 20px 0;
+  align-items: center;
+  margin: 20px auto;
 }
 
-.finish-image {
-  width: auto;
-  max-width: 200px; /* ← 横幅を固定して極端に大きくならないように */
-  height: auto;
-  margin: 10px auto;
+.result-image {
+  max-width: 20%;    /* 横幅を画面の20%に制限 */
+  max-height: 20vh;  /* 高さを画面の20%に制限 */
   object-fit: contain;
+  display: block;
+  margin: 10px auto;
 }
+
+
 
 
 
