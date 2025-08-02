@@ -233,7 +233,7 @@ function endGame(cleared) {
   const randomImage = images[Math.floor(Math.random() * images.length)];
   const resultImage = document.createElement('img');
   resultImage.src = randomImage;
-  resultImage.classList.add('result-image');
+  resultImage.classList.add('finish-image'); 
   const targetScreen = cleared ? gameClearScreen : gameOverScreen;
   const resultArea = targetScreen.querySelector('.result-area');
   resultArea.innerHTML = ''; resultArea.appendChild(resultImage);
