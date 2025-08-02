@@ -184,20 +184,19 @@ body:not(.game-active) #game-banner { display: none !important; }
   align-items: center;
   justify-content: center;
 
-  /* 画面いっぱいは使わずコンパクトに */
-  min-height: auto;
-  height: auto;
-  gap: 8px; /* 要素間の間隔を短く */
-  margin-top: 5vh; /* ほんの少し上に余白 */
+  /* 高さを固定せず、中央寄せ */
+  min-height: 50vh; /* 全画面の半分くらいに収める */
+  gap: 10px;
 }
 
 .finish-image {
   width: auto;
-  max-width: 30vw;
-  max-height: 30vh;
+  max-height: 30vh; /* 見た目を大きめにする */
   object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
+
 
 #game-over-screen p,
 #game-clear-screen p {
