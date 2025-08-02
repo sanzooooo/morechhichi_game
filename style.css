@@ -177,22 +177,57 @@ body:not(.game-active) #game-banner { display: none !important; }
   #game-over-screen p, #game-clear-screen p { font-size: 2rem; }
 }
 
-/* === 結果画面の画像（ランダム表示用） === */
+/* === 結果画面レイアウト === */
 .result-area {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin: 20px auto;
-  min-height: 150px; /* 下が詰まらないように */
+  justify-content: center;  /* 中央寄せ */
+  gap: 20px;                /* 各要素の間隔 */
+  width: 100%;
+  min-height: 60vh;         /* ある程度の縦スペース確保 */
 }
 
 .result-image {
-  max-width: 180px;   /* 小さめ固定でもOK */
-  max-height: 180px;
+  max-width: 40vw;          /* PCは画面幅の40% */
+  max-height: 40vh;         /* PCは画面高さの40% */
   object-fit: contain;
   display: block;
-  margin: 10px auto;
 }
+
+/* スコア表示を大きく中央寄せ */
+#game-over-screen p,
+#game-clear-screen p {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+/* ボタンを中央寄せ */
+.image-button {
+  margin: 20px auto;
+}
+
+/* === モバイル調整 === */
+@media (max-width: 600px) {
+  .result-image {
+    max-width: 70vw;   /* 幅広めでもOK */
+    max-height: 35vh;  /* 高さは抑える */
+  }
+  #game-over-screen p,
+  #game-clear-screen p {
+    font-size: 2rem;
+  }
+}
+
+
+
+
+
+
+
+
 
 
 
