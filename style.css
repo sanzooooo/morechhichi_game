@@ -41,18 +41,27 @@ body.game-active {
 
 /* === ゲーム画面調整 === */
 #game-screen.screen {
-  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* 横中央寄せ */
   justify-content: flex-start;
-  align-items: flex-start;
+  padding-top: 0;       /* ← ここを消す */
+  box-sizing: border-box;
 }
 
-/* === ゲームエリア === */
 #game-screen .game-area {
-  margin-top: 100px; /* スコア分の余白のみ */
+  margin-top: 140px;    /* ← スコア分の余白はここだけに */
   border: none;
   border-radius: 0;
   padding: 0;
 }
+
+@media (max-width: 600px) {
+  #game-screen .game-area {
+    margin-top: 100px; /* スマホは画面が狭いので控えめ */
+  }
+}
+
 .game-area {
   position: relative;
   width: 100%;
@@ -61,9 +70,10 @@ body.game-active {
   background-image: url('img/background.png');
   background-repeat: no-repeat;
   background-size: auto 100%;
-  background-position: center;
+  background-position: center;  /* 中央寄せ */
   background-color: transparent;
 }
+
 
 /* === スコア表示 === */
 .score-container {
@@ -137,7 +147,7 @@ body.game-active {
 }
 
 /* === 画像ボタン共通 === */
-.image-button { background:none; border:none; padding:0; cursor:pointer; display:block; margin:12px auto 0; }
+.image-button { background:none; border:none; padding:0; cursor:pointer; display:block; margin:8px auto 0; }
 .image-button img { width:200px; max-width:50vw; height:auto; display:block; }
 
 /* === トップ画面バナー === */
@@ -191,6 +201,3 @@ body:not(.game-active) #game-banner { display: none !important; }
   #game-over-screen p, #game-clear-screen p { font-size: 1.6rem; }
   .image-button img { width: 140px; }
 }
-
-
-
