@@ -76,8 +76,8 @@ body.game-active {
 
 @media (max-width: 600px) {
   .game-area {
-    background-size: 100% auto;  /* 横幅いっぱいにフィット */
-    background-position: center top; /* 上寄せで切れを自然に */
+    background-size: cover;  /* 横幅優先で上下は切れてOK */
+    background-position: center; 
   }
 }
 
