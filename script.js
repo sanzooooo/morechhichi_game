@@ -218,28 +218,29 @@ function endGame(cleared) {
   bgm.pause(); bgm.currentTime = 0;
 
   gameScreen.classList.add('hidden'); hideBanner();
-
-  const targetScreen = cleared ? gameClearScreen : gameOverScreen;
-  const scoreTarget = cleared ? clearScoreDisplay : finalScoreDisplay;
-  scoreTarget.textContent = score;
-
-  // ランダム画像のみ更新
-  const images = ['img/game_finish1.png', 'img/game_finish2.png'];
-  const randomImage = images[Math.floor(Math.random() * images.length)];
-  const resultArea = targetScreen.querySelector('.result-area');
-  resultArea.innerHTML = ''; // 画像だけ入れる
-  const resultImage = document.createElement('img');
-  resultImage.src = randomImage;
-  resultImage.classList.add('finish-image');
-  resultArea.appendChild(resultImage);
-
-  targetScreen.classList.remove('hidden');
+  if (cleared) {
+    gameClearScreen.classList.remove('hidden');
+    clearScoreDisplay.textContent = score;
+  } else {
+    gameOverScreen.classList.remove('hidden');
+    finalScoreDisplay.textContent = score;
+  }
 
   saveScore(score); showScoreHistory();
-  goalSound.pause(); goalSound.currentTime = 0;
-  goalSound.play().catch(() => {});
+
+  goalSound.pause(); goalSound.currentTime = 0; goalSound.play().catch(() => {});
+  const images = ['img/game_finish1.png', 'img/game_finish2.png'];
+  const randomImage = images[Math.floor(Math.random() * images.length)];
+  const resultImage = document.createElement('img');
+  resultImage.src = randomImage;
+  resultImage.classList.add('result-image');
+  const targetScreen = cleared ? gameClearScreen : gameOverScreen;
+  const resultArea = targetScreen.querySelector('.result-area');
+  resultArea.innerHTML = ''; resultArea.appendChild(resultImage);
 }
 
+function showBanner() { bottomBanner.style.display = 'block'; }
+function hideBanner() { bottomBanner.style.display = 'none'; }
 
 // ===== スコア保存・表示 =====
 function saveScore(score) {
