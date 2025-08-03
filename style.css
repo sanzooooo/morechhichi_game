@@ -325,27 +325,43 @@ body.game-active .game-area {
   margin-bottom: 0 !important;
 }
 
-/* === モバイル用：美しく余白を確保 === */
+/* === モバイル用：スコア・背景・ロゴを固定して美しく === */
 @media (max-width: 600px) {
+
+  /* ゲーム全体を固定レイアウトに */
   body.game-active #game-screen {
+    position: relative !important;
+    display: block !important;      /* flexをやめる */
+    height: 100dvh !important;      /* 動的ビューポート */
+    overflow: hidden !important;
     padding-top: 0 !important;
   }
 
+  /* スコアを上に固定 */
   body.game-active .score-container {
+    position: absolute !important;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 1.4rem !important;
-    gap: 20px !important;
     white-space: nowrap !important;
-    justify-content: center !important;
-    margin-top: 20px !important;   /* 上に余白を持たせる */
-    margin-bottom: 5px !important; /* 下も少しだけ */
-    position: relative !important; /* 絶対配置はやめる */
+    gap: 20px !important;
+    margin: 0 !important;
   }
 
+  /* ゲームエリアはスコアの下に固定 */
   body.game-active .game-area {
-    height: 360px !important;
-    min-height: 340px !important;
+    position: absolute !important;
+    top: 60px;                     /* スコアの高さ分下げる */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    height: 360px !important;      /* 高さを少し確保 */
+    margin: 0 !important;
   }
 
+  /* ロゴを画面下に固定 */
   #game-banner {
     position: fixed !important;
     bottom: 40px !important;
@@ -357,4 +373,3 @@ body.game-active .game-area {
     max-height: 85px !important;
   }
 }
-
