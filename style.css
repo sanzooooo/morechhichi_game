@@ -293,7 +293,7 @@ body.game-active .game-area {
   margin-bottom: 0; /* ゲーム中は余白ゼロ */
 }
 
-/* === ゲーム中の画面レイアウト調整（安定版） === */
+/* === ゲーム中の画面レイアウト調整（PC安定版） === */
 body.game-active #game-screen {
   display: flex !important;
   flex-direction: column !important;
@@ -302,7 +302,7 @@ body.game-active #game-screen {
   position: relative !important;
   margin: 0 !important;
   padding-top: 40px !important; /* PCは少し下げる */
-  min-height: auto !important; /* 100vhを無効化 */
+  min-height: auto !important;  /* 100vhを無効化 */
 }
 
 body.game-active .score-container {
@@ -315,48 +315,16 @@ body.game-active .game-area {
   margin-bottom: 0 !important;
 }
 
-/* === モバイル最適化＆ロゴ位置安定（整理版） === */
+/* === モバイル安定化（絶対配置でズレ防止） === */
 @media (max-width: 600px) {
 
-  /* 画面全体バランス */
-  body.game-active #game-screen {
-    padding-top: 60px !important;
-  }
-
-  /* スコア位置と文字サイズ */
-  body.game-active .score-container {
-    font-size: 1.4rem !important;
-    margin-top: 15px !important;
-    margin-bottom: 3px !important;
-  }
-
-  /* ゲームエリア縮小＆下余白確保 */
-  body.game-active .game-area {
-    margin-top: 5px !important;
-    min-height: 340px !important; /* 安全な最小高さ */
-    height: 340px !important;     /* 強制高さ */
-  }
-
-  /* ロゴはやや大きく＆下端から浮かせる */
-  #game-banner {
-    position: fixed !important;
-    bottom: 40px !important;
-    width: 100%;
-  }
-  #game-banner img {
-    max-height: 85px !important;
-  }
-}
-
-/* === モバイル安定化：スコア・背景・ロゴを固定配置 === */
-@media (max-width: 600px) {
-
-  /* ゲーム全体を固定高さで安定させる */
+  /* ゲーム全体を固定レイアウトに */
   body.game-active #game-screen {
     position: relative !important;
-    height: calc(100vh - 140px) !important; /* スコア+ロゴ分を考慮 */
+    height: 100dvh !important; /* 動的ビューポートで安定 */
     overflow: hidden !important;
-    padding-top: 0 !important; /* 余白は固定配置に任せる */
+    padding-top: 0 !important;
+    display: block !important; /* flexはやめる */
   }
 
   /* スコアを上中央に固定 */
@@ -365,6 +333,7 @@ body.game-active .game-area {
     top: 15px;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 1.4rem !important;
     margin: 0 !important;
   }
 
@@ -392,5 +361,3 @@ body.game-active .game-area {
     max-height: 85px !important;
   }
 }
-
-
