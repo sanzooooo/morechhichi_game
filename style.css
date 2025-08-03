@@ -293,7 +293,7 @@ body.game-active .game-area {
   margin-bottom: 0; /* ゲーム中は余白ゼロ */
 }
 
-/* === ゲーム中の画面レイアウト調整（PC安定版） === */
+/* === PC用レイアウト（安定版） === */
 body.game-active #game-screen {
   display: flex !important;
   flex-direction: column !important;
@@ -301,13 +301,24 @@ body.game-active #game-screen {
   align-items: center !important;
   position: relative !important;
   margin: 0 !important;
-  padding-top: 40px !important; /* PCは少し下げる */
+  padding-top: 40px !important;
   min-height: auto !important;  /* 100vhを無効化 */
 }
 
 body.game-active .score-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 15px !important;
   margin-top: 20px !important;
   margin-bottom: 8px !important;
+  font-size: 1.4rem !important;
+  white-space: nowrap !important; /* 折り返さない */
+}
+
+body.game-active .score-container .score-item {
+  display: inline-flex;
+  align-items: center;
 }
 
 body.game-active .game-area {
@@ -324,7 +335,7 @@ body.game-active .game-area {
     height: 100dvh !important; /* 動的ビューポートで安定 */
     overflow: hidden !important;
     padding-top: 0 !important;
-    display: block !important; /* flexはやめる */
+    display: block !important; /* モバイルは絶対配置ベースにする */
   }
 
   /* スコアを上中央に固定 */
@@ -333,8 +344,10 @@ body.game-active .game-area {
     top: 15px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.4rem !important;
+    font-size: 1.2rem !important;  /* 少し小さくして1行に収める */
+    gap: 15px !important;
     margin: 0 !important;
+    white-space: nowrap !important;
   }
 
   /* ゲームエリアをスコア下に固定 */
@@ -359,22 +372,5 @@ body.game-active .game-area {
 
   #game-banner img {
     max-height: 85px !important;
-  }
-}
-
-/* === スコア表示を安定化（折り返し防止） === */
-body.game-active .score-container {
-  white-space: nowrap;        /* 折り返し禁止 */
-  flex-wrap: nowrap;          /* 強制的に1行 */
-  justify-content: space-around; /* 均等配置で詰まり防止 */
-}
-
-/* === モバイル安定化：スコアを必ず1行にする === */
-@media (max-width: 600px) {
-  body.game-active .score-container {
-    font-size: 1.2rem !important;   /* 少し小さくして収める */
-    gap: 15px !important;           /* 余白を詰める */
-    white-space: nowrap !important; /* 折り返さない */
-    flex-wrap: nowrap !important;   /* Flexで折り返し無効 */
   }
 }
