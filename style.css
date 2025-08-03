@@ -325,42 +325,37 @@ body.game-active .game-area {
   margin-bottom: 0 !important;
 }
 
-/* === モバイル用：スコア・背景・ロゴを固定して美しく === */
 @media (max-width: 600px) {
 
   body.game-active #game-screen {
     position: relative !important;
-    display: block !important;
-    height: 100dvh !important;
-    overflow: hidden !important;
-    padding-top: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    height: 100dvh !important;      /* ← 動的vhで高さ安定 */
+    padding-top: 40px !important;
   }
 
-  /* スコアを少し下げる */
+  /* スコアは相対配置 */
   body.game-active .score-container {
-    position: absolute !important;
-    top: 40px; /* ← 余裕を持たせる */
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative !important;
     font-size: 1.4rem !important;
     white-space: nowrap !important;
     gap: 20px !important;
-    margin: 0 !important;
+    margin-bottom: 10px !important;
   }
 
-  /* ゲームエリアをスコアの下に配置 */
+  /* ゲームエリアは割合指定に変更 */
   body.game-active .game-area {
-    position: absolute !important;
-    top: 160px; /* ← 修正: px を追加 */
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative !important;
     width: 100%;
     max-width: 600px;
-    height: 360px !important;
-    margin: 0 !important;
+    height: 45vh !important;        /* ← 固定pxから割合に変更 */
+    min-height: 320px !important;   /* 小さい端末でも確保 */
+    margin-bottom: auto !important;
   }
 
-  /* ロゴは現状維持 */
+  /* ロゴは固定 */
   #game-banner {
     position: fixed !important;
     bottom: 40px !important;
@@ -372,4 +367,3 @@ body.game-active .game-area {
     max-height: 85px !important;
   }
 }
-
