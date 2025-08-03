@@ -124,7 +124,7 @@ body.game-active {
 
 #game-banner img {
   max-width: 100%;
-  max-height: 280px !important; /* PC用 */
+  max-height: 220px !important; /* PC用 */
   height: auto;
   margin: 0 auto;
   display: block;
@@ -347,7 +347,7 @@ body.game-active .game-area {
   }
 
   #game-banner img {
-    max-height: 200px !important;
+    max-height: 160px !important;
   }
 }
 
