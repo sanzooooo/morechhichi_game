@@ -292,3 +292,34 @@ body.game-active {
 body.game-active .game-area {
   margin-bottom: 0; /* ゲーム中は余白ゼロ */
 }
+
+/* === ゲーム中の画面を上寄せに変更（整理版） === */
+body.game-active #game-screen {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important; /* 上寄せに変更 */
+  align-items: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  top: 0 !important; /* 必要なら後で -20px とかで微調整 */
+  min-height: auto !important;           /* 100vhを無効化 */
+}
+
+body.game-active .score-container {
+  margin-top: 10px !important;
+  margin-bottom: 5px !important;
+}
+
+body.game-active .game-area {
+  margin-top: 0 !important;
+}
+
+/* === モバイル最適化 === */
+@media (max-width: 600px) {
+  body.game-active .score-container {
+    margin-top: 5px !important;
+    font-size: 1.4rem !important;
+  }
+}
+
