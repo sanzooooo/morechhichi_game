@@ -297,7 +297,7 @@ body.game-active .game-area {
 body.game-active #game-screen {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important; /* 上寄せ基準 */
+  justify-content: flex-start !important;
   align-items: center !important;
   position: relative !important;
   margin: 0 !important;
@@ -306,8 +306,8 @@ body.game-active #game-screen {
 }
 
 body.game-active .score-container {
-  margin-top: 20px !important;   /* スコアの上余白 */
-  margin-bottom: 8px !important; /* スコアとゲームエリアの間 */
+  margin-top: 20px !important;
+  margin-bottom: 8px !important;
 }
 
 body.game-active .game-area {
@@ -315,12 +315,12 @@ body.game-active .game-area {
   margin-bottom: 0 !important;
 }
 
-/* === モバイル最適化＆ロゴ位置安定（統合版） === */
+/* === モバイル最適化＆ロゴ位置安定（整理版） === */
 @media (max-width: 600px) {
 
-  /* 全体バランス */
+  /* 画面全体バランス */
   body.game-active #game-screen {
-    padding-top: 60px !important; /* モバイルは余裕多め */
+    padding-top: 60px !important;
   }
 
   /* スコア位置と文字サイズ */
@@ -330,17 +330,21 @@ body.game-active .game-area {
     margin-bottom: 3px !important;
   }
 
-  /* ゲームエリア縮小で下余白を確保 */
+  /* ゲームエリア縮小＆下余白確保 */
   body.game-active .game-area {
     margin-top: 5px !important;
-    height: 340px !important; /* 元400pxから縮小 */
+    min-height: 340px !important; /* 安全な最小高さ */
+    height: 340px !important;     /* 強制高さ */
   }
 
   /* ロゴはやや大きく＆下端から浮かせる */
+  #game-banner {
+    position: fixed !important;
+    bottom: 40px !important;
+    width: 100%;
+  }
   #game-banner img {
     max-height: 85px !important;
   }
-  #game-banner {
-    bottom: 40px !important;
-  }
 }
+
