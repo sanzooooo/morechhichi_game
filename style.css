@@ -301,8 +301,8 @@ body.game-active #game-screen {
   align-items: center !important;
   position: relative !important;
   margin: 0 !important;
-  padding-top: 40px !important; /* ← PC時は全体を少し下げる */
-  min-height: auto !important; /* 100vhを無効化して自由に調整 */
+  padding-top: 40px !important; /* PCは少し下げる */
+  min-height: auto !important; /* 100vhを無効化 */
 }
 
 body.game-active .score-container {
@@ -311,36 +311,36 @@ body.game-active .score-container {
 }
 
 body.game-active .game-area {
-  margin-top: 0 !important;      /* 上方向の余白は詰める */
-  margin-bottom: 0 !important;   /* 下余白ゼロ（ロゴ近く） */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-/* === モバイル最適化＆見た目調整（安定優先） === */
+/* === モバイル最適化＆ロゴ位置安定（統合版） === */
 @media (max-width: 600px) {
-  /* 全体をさらに下げてバランス調整 */
+
+  /* 全体バランス */
   body.game-active #game-screen {
-    padding-top: 60px !important; /* ← モバイルは余裕多め */
+    padding-top: 60px !important; /* モバイルは余裕多め */
   }
 
-  /* スコア位置と文字サイズを最適化 */
+  /* スコア位置と文字サイズ */
   body.game-active .score-container {
     font-size: 1.4rem !important;
     margin-top: 15px !important;
     margin-bottom: 3px !important;
   }
 
-  /* ゲームエリアは少し下げて呼吸スペースを確保 */
+  /* ゲームエリア縮小で下余白を確保 */
   body.game-active .game-area {
     margin-top: 5px !important;
+    height: 340px !important; /* 元400pxから縮小 */
   }
 
-  /* ロゴは少し小さく */
+  /* ロゴはやや大きく＆下端から浮かせる */
   #game-banner img {
-    max-height: 80px !important;
+    max-height: 85px !important;
   }
-
-  /* ロゴを下端から少し浮かせる */
   #game-banner {
-    bottom: 20px !important;
+    bottom: 40px !important;
   }
 }
