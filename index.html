@@ -6,46 +6,48 @@
   <title>もれちっちのグッズキャッチ！</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <!-- 固定背景 -->
-  <div class="bg"></div>
+    <!-- ゲームスタート画面 -->
+<div id="start-screen" class="screen">
 
-  <!-- ゲームスタート画面 -->
-  <div id="start-screen" class="screen">
+  <!-- タイトル画像だけを表示 -->
+<img src="img/motech_banner.png" alt="もれちっちバナー" class="start-image" />
 
-    <!-- タイトル画像 -->
-    <img src="img/motech_banner.png" alt="もれちっちバナー" class="start-image" />
+<!-- アイテム一覧画像に置き換え -->
+<img src="img/score.png" alt="アイテム一覧" class="score-image" />
 
-    <!-- アイテム一覧画像 -->
-    <img src="img/score.png" alt="アイテム一覧" class="score-image" />
-
-    <!-- スコア履歴（シンプル版） -->
-    <div class="score-section">
-      <!-- ベストスコア -->
-      <div class="best-score-block">
-        <img src="img/score_best_banner.png" alt="ベストスコア" class="score-banner" />
-        <div class="score-value" id="bestScore">0</div>
-      </div>
-
-      <!-- 過去スコア -->
-      <div class="old-score-block">
-        <img src="img/score_old_banner.png" alt="過去スコア" class="score-banner" />
-        <div class="score-row" id="score1">-</div>
-        <div class="score-row" id="score2">-</div>
-        <div class="score-row" id="score3">-</div>
-      </div>
-    </div>
-
-    <!-- ゲーム開始ボタン -->
-    <button id="start-button" class="image-button">
-      <img src="img/game_start.png" alt="ゲーム開始" />
-    </button>  
-
+<!-- スコア履歴（シンプル版） -->
+<div class="score-section">
+  
+  <!-- ベストスコア -->
+  <div class="best-score-block">
+    <img src="img/score_best_banner.png" alt="ベストスコア" class="score-banner" />
+    <div class="score-value" id="bestScore">0</div>
   </div>
 
-  <!-- ゲーム画面 -->
-  <div id="game-screen" class="screen hidden">
+  <!-- 過去スコア -->
+  <div class="old-score-block">
+    <img src="img/score_old_banner.png" alt="過去スコア" class="score-banner" />
+    <div class="score-row" id="score1">-</div>
+    <div class="score-row" id="score2">-</div>
+    <div class="score-row" id="score3">-</div>
+  </div>
+
+</div>
+
+
+  <!-- ゲーム開始ボタン -->
+  <button id="start-button" class="image-button">
+    <img src="img/game_start.png" alt="ゲーム開始" />
+  </button>  
+
+</div>
+
+
+    <!-- ゲーム画面 -->
+<div id="game-screen" class="screen hidden">
     <div class="score-container">
       <div>スコア: <span id="score">0</span></div>
       <div>ライフ: <span id="lives">3</span></div>
@@ -56,35 +58,30 @@
     </div>
   </div>
   
-  <!-- ゲーム中バナー -->
+  <!-- ✅ ゲーム画面の外に出したゲーム中バナー -->
   <div id="game-banner">
     <img src="img/motech_banner2.png" alt="もれちっちバナー" />
   </div>
   
-  <!-- ゲームオーバー画面 -->
-  <div id="game-over-screen" class="screen hidden">
-    <div class="result-area"></div>
-    <p>スコア: <span id="final-score">0</span></p>
-    <button id="retry-button" class="image-button">
-      <img src="img/game_again.png" alt="もう一回！" />
-    </button>
-  </div>
   
-  <div id="game-clear-screen" class="screen hidden">
-    <div class="result-area"></div>
-    <p>スコア: <span id="clear-score">0</span></p>
-    <button id="retry-button-clear" class="image-button">
-      <img src="img/game_again.png" alt="もう一回！" />
-    </button>
-  </div>  
+  <!-- ゲームオーバー画面 -->
+<div id="game-over-screen" class="screen hidden">
+  <div class="result-area"></div>
+  <p>スコア: <span id="final-score">0</span></p>
+  <button id="retry-button" class="image-button">
+    <img src="img/game_again.png" alt="もう一回！" />
+  </button>
+</div>
 
+<!-- クリア画面 -->
+<div id="game-clear-screen" class="screen hidden">
+  <div class="result-area"></div>
+  <p>スコア: <span id="clear-score">0</span></p>
+  <button id="retry-button-clear" class="image-button">
+    <img src="img/game_again.png" alt="もう一回！" />
+  </button>
+</div>
+  
   <script src="script.js" defer></script>
 </body>
 </html>
-
-
-  
-  
-
-  
-  
