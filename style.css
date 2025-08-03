@@ -293,49 +293,50 @@ body.game-active .game-area {
   margin-bottom: 0; /* ゲーム中は余白ゼロ */
 }
 
-/* === ゲーム中の画面を上寄せに変更（整理版） === */
+/* === ゲーム中の画面レイアウト調整（整理版） === */
 body.game-active #game-screen {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important; /* 上寄せに変更 */
+  justify-content: flex-start !important; /* 上寄せ基準 */
   align-items: center !important;
-  padding: 0 !important;
-  margin: 0 !important;
   position: relative !important;
-  top: 0 !important; /* 必要なら後で -20px とかで微調整 */
-  min-height: auto !important;           /* 100vhを無効化 */
+  margin: 0 !important;
+  padding-top: 40px !important; /* ← PC時は全体を少し下げる */
+  min-height: auto !important; /* 100vhを無効化して自由に調整 */
 }
 
 body.game-active .score-container {
-  margin-top: 10px !important;
-  margin-bottom: 5px !important;
+  margin-top: 20px !important;  /* スコアの上余白 */
+  margin-bottom: 8px !important; /* スコアとゲームエリアの間 */
 }
 
 body.game-active .game-area {
-  margin-top: 0 !important;
+  margin-top: 0 !important;  /* 上方向の余白は詰める */
+  margin-bottom: 0 !important; /* 下余白ゼロ（ロゴ近く） */
 }
 
-/* === モバイル最適化＆見た目調整まとめ === */
+/* === モバイル最適化＆見た目調整 === */
 @media (max-width: 600px) {
-  /* スコア文字サイズと位置 */
+  /* 全体をさらに下げてバランス調整 */
+  body.game-active #game-screen {
+    padding-top: 60px !important; /* ← モバイルは余裕多め */
+  }
+
+  /* スコア位置と文字サイズを最適化 */
   body.game-active .score-container {
     font-size: 1.4rem !important;
-    margin-top: 0 !important;
+    margin-top: 15px !important;
     margin-bottom: 3px !important;
   }
 
-  /* ゲーム画面の位置 */
-  body.game-active #game-screen {
-    padding-top: 20px !important; /* 少し下に余裕 */
-  }
-
-  /* ゲームエリア余裕 */
+  /* ゲームエリアは少し下げて呼吸スペースを確保 */
   body.game-active .game-area {
     margin-top: 5px !important;
   }
 
-  /* ロゴを小さく */
+  /* ロゴは少し小さく */
   #game-banner img {
     max-height: 80px !important;
   }
 }
+
