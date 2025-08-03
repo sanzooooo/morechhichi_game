@@ -54,12 +54,6 @@ body.game-active {
   display: block;
 }
 
-@media (max-width: 600px) {
-  .image-button img {
-    max-width: 240px;
-  }
-}
-
 /* === ゲームエリア === */
 .game-area {
   position: relative;
@@ -302,7 +296,6 @@ body.game-active .score-container {
   justify-content: center !important;
   align-items: center !important;
   gap: 60px !important;
-  font-size: 2.4rem !important;
   font-weight: 600;
   white-space: nowrap !important; /* 折り返し防止 */
   margin-top: 20px !important;
@@ -345,14 +338,6 @@ body.game-active .game-area {
     background-position: center !important;
   }
 
-  /* スコアの文字を少し縮小 */
-  body.game-active .score-container {
-    font-size: 1.2rem !important;
-    gap: 12px !important;
-  }
-}
-
-
   /* ロゴは固定 */
   #game-banner {
     position: fixed !important;
@@ -364,4 +349,15 @@ body.game-active .game-area {
   #game-banner img {
     max-height: 85px !important;
   }
+}
+
+/* === モバイル用: スコア縮小 === */
+@media (max-width: 600px) {
+  body.game-active .score-container {
+    font-size: 1.2rem;
+    gap: 12px; /* 余白も少し詰めるとバランス良い */
+  }
+}
+
+
 
