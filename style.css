@@ -368,3 +368,13 @@ body.game-active .score-container {
   flex-wrap: nowrap;          /* 強制的に1行 */
   justify-content: space-around; /* 均等配置で詰まり防止 */
 }
+
+/* === モバイル安定化：スコアを必ず1行にする === */
+@media (max-width: 600px) {
+  body.game-active .score-container {
+    font-size: 1.2rem !important;   /* 少し小さくして収める */
+    gap: 15px !important;           /* 余白を詰める */
+    white-space: nowrap !important; /* 折り返さない */
+    flex-wrap: nowrap !important;   /* Flexで折り返し無効 */
+  }
+}
