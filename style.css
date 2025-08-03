@@ -49,7 +49,7 @@ body.game-active {
 
 .image-button img {
   width: 100%;
-  max-width: 320px;
+  max-width: 350px;
   height: auto;
   display: block;
 }
@@ -347,7 +347,7 @@ body.game-active .game-area {
   }
 
   #game-banner img {
-    max-height: 260px !important;
+    max-height: 280px !important;
   }
 }
 
@@ -384,11 +384,6 @@ body::after {
   background-repeat: no-repeat;
   visibility: hidden;
 }
-
-
-
-
-
 
 
 
