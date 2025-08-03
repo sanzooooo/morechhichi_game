@@ -99,7 +99,8 @@ function startGame() {
   showBanner();
 
   score = 0; lives = 3; timeLeft = 60;
-  playerX = 50; playerY = 10;
+  playerX = 50; 
+  playerY = window.innerWidth < 600 ? 100 : 10; //
   gameEnded = false; isDragging = true;
 
   updateUI(); updatePlayerPosition();
