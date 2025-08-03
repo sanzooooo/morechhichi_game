@@ -306,13 +306,13 @@ body.game-active #game-screen {
 }
 
 body.game-active .score-container {
-  margin-top: 20px !important;  /* スコアの上余白 */
+  margin-top: 20px !important;   /* スコアの上余白 */
   margin-bottom: 8px !important; /* スコアとゲームエリアの間 */
 }
 
 body.game-active .game-area {
-  margin-top: 0 !important;  /* 上方向の余白は詰める */
-  margin-bottom: 0 !important; /* 下余白ゼロ（ロゴ近く） */
+  margin-top: 0 !important;      /* 上方向の余白は詰める */
+  margin-bottom: 0 !important;   /* 下余白ゼロ（ロゴ近く） */
 }
 
 /* === モバイル最適化＆見た目調整 === */
@@ -340,3 +340,8 @@ body.game-active .game-area {
   }
 }
 
+@media (max-width: 600px) {
+  #game-banner {
+    bottom: 20px !important; /* ← 下端から20px浮かせる */
+  }
+}
