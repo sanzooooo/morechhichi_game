@@ -293,27 +293,26 @@ body.game-active .game-area {
   margin-bottom: 0; /* ゲーム中は余白ゼロ */
 }
 
-/* === PC用レイアウト（安定版） === */
+/* === PC用：ゲーム中レイアウト安定版 === */
 body.game-active #game-screen {
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-start !important;
   align-items: center !important;
-  position: relative !important;
   margin: 0 !important;
-  padding-top: 40px !important;
-  min-height: auto !important;  /* 100vhを無効化 */
+  padding-top: 40px !important; /* 少し下げる */
 }
 
 body.game-active .score-container {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 15px !important;
+  gap: 60px !important;
+  font-size: 2.4rem !important;
+  font-weight: 600;
+  white-space: nowrap !important; /* 折り返し防止 */
   margin-top: 20px !important;
   margin-bottom: 8px !important;
-  font-size: 1.4rem !important;
-  white-space: nowrap !important; /* 折り返さない */
 }
 
 body.game-active .score-container .score-item {
@@ -326,43 +325,27 @@ body.game-active .game-area {
   margin-bottom: 0 !important;
 }
 
-/* === モバイル安定化（絶対配置でズレ防止） === */
+/* === モバイル用：美しく余白を確保 === */
 @media (max-width: 600px) {
-
-  /* ゲーム全体を固定レイアウトに */
   body.game-active #game-screen {
-    position: relative !important;
-    height: 100dvh !important; /* 動的ビューポートで安定 */
-    overflow: hidden !important;
     padding-top: 0 !important;
-    display: block !important; /* モバイルは絶対配置ベースにする */
   }
 
-  /* スコアを上中央に固定 */
   body.game-active .score-container {
-    position: absolute !important;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.2rem !important;  /* 少し小さくして1行に収める */
-    gap: 15px !important;
-    margin: 0 !important;
+    font-size: 1.4rem !important;
+    gap: 20px !important;
     white-space: nowrap !important;
+    justify-content: center !important;
+    margin-top: 20px !important;   /* 上に余白を持たせる */
+    margin-bottom: 5px !important; /* 下も少しだけ */
+    position: relative !important; /* 絶対配置はやめる */
   }
 
-  /* ゲームエリアをスコア下に固定 */
   body.game-active .game-area {
-    position: absolute !important;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 600px;
-    height: 340px !important;
-    margin: 0 !important;
+    height: 360px !important;
+    min-height: 340px !important;
   }
 
-  /* ロゴを下端に固定 */
   #game-banner {
     position: fixed !important;
     bottom: 40px !important;
@@ -374,3 +357,4 @@ body.game-active .game-area {
     max-height: 85px !important;
   }
 }
+
