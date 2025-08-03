@@ -326,24 +326,26 @@ body.game-active .game-area {
 }
 
 @media (max-width: 600px) {
-
   body.game-active #game-screen {
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    height: 100dvh !important;      /* ← 動的vhで高さ安定 */
-    padding-top: 40px !important;
+    height: 100dvh !important;   /* ← iOSでも安定 */
+    padding-top: 40px !important; /* ← ゲーム全体の上余白 */
   }
 
-  /* スコアは相対配置 */
+  /* スコアを少し下げて読みやすくする */
   body.game-active .score-container {
     position: relative !important;
-    font-size: 1.4rem !important;
-    white-space: nowrap !important;
-    gap: 20px !important;
+    font-size: 1.6rem !important;
+    margin-top: 20px !important; /* ← ここで更に下げる */
     margin-bottom: 10px !important;
+    gap: 20px !important;
+    white-space: nowrap !important;
   }
+}
+
 
   /* ゲームエリアは割合指定に変更 */
   body.game-active .game-area {
