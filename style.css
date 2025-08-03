@@ -124,7 +124,7 @@ body.game-active {
 
 #game-banner img {
   max-width: 100%;
-  max-height: 120px;
+  max-height: 180px !important; /* PC用 */
   height: auto;
   margin: 0 auto;
   display: block;
@@ -347,7 +347,7 @@ body.game-active .game-area {
   }
 
   #game-banner img {
-    max-height: 85px !important;
+    max-height: 130px !important;
   }
 }
 
@@ -358,6 +358,33 @@ body.game-active .game-area {
     gap: 12px; /* 余白も少し詰めるとバランス良い */
   }
 }
+
+/* === 背景画像プリロード（白画面対策）=== */
+
+/* モバイル用（auto 100% + repeat-x） */
+body::before {
+  content: "";
+  position: fixed;
+  width: 0;
+  height: 0;
+  background-image: url('img/background.png');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  visibility: hidden;
+}
+
+/* PC用（cover + no-repeat） */
+body::after {
+  content: "";
+  position: fixed;
+  width: 0;
+  height: 0;
+  background-image: url('img/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  visibility: hidden;
+}
+
 
 
 
