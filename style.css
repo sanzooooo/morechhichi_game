@@ -351,7 +351,7 @@ body.game-active .game-area {
   /* ゲームエリアをスコアの下に配置 */
   body.game-active .game-area {
     position: absolute !important;
-    top: 120px; /* ← 修正: px を追加 */
+    top: 160px; /* ← 修正: px を追加 */
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
