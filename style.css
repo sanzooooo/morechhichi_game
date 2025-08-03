@@ -315,11 +315,27 @@ body.game-active .game-area {
   margin-top: 0 !important;
 }
 
-/* === モバイル最適化 === */
+/* === モバイル最適化＆見た目調整まとめ === */
 @media (max-width: 600px) {
+  /* スコア文字サイズと位置 */
   body.game-active .score-container {
-    margin-top: 5px !important;
     font-size: 1.4rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 3px !important;
+  }
+
+  /* ゲーム画面の位置 */
+  body.game-active #game-screen {
+    padding-top: 20px !important; /* 少し下に余裕 */
+  }
+
+  /* ゲームエリア余裕 */
+  body.game-active .game-area {
+    margin-top: 5px !important;
+  }
+
+  /* ロゴを小さく */
+  #game-banner img {
+    max-height: 80px !important;
   }
 }
-
